@@ -16,7 +16,7 @@ git clone https://github.com/thiagomalks/zaio
 <p>Ap&oacute;s instala&ccedil;&atilde;o, acesse o Zabbix pelo navegador utilizando o IP do servidor de instala&ccedil;&atilde;o.</p>
 <p>Se aparecer uma mensagem de erro de conexão com o banco, é por que este ainda está sendo populado. Aguarde até 5 minutos.</p>
 <p>User: Admin<br />Pass: zabbix</p>
-<p>Após logar, vá em Configuration - Hosts , selecione o host Zabbix server<br> no Agent, mude para DNS e coloque zabbix-agent no campo DNS name, para que o agent do zabbix fique ativado.</p>
+<p>Após logar, vá em Configuration - Hosts , selecione o host Zabbix server. No agent, mude para DNS e coloque zabbix-agent no campo DNS name, para que o agent do zabbix fique ativado.</p>
 <p>Acesse o Portainer pelo navegador utilizando o IP do servidor de instala&ccedil;&atilde;o:9000.</p>
 <p><strong>Diret&oacute;rios Principais da Instala&ccedil;&atilde;o:</strong></p>
 <p>Docker Compose: /home/zabbix</p>
