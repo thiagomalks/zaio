@@ -1,2 +1,23 @@
 # zaio
 Zabbix All In One Architecture
+
+<h1>Zabbix LAB Full Install - Docker</h1>
+<p>Laborat&oacute;rio implementado para um servidor com as seguintes configura&ccedil;&otilde;es:</p>
+<p>SO: Ubuntu 20.04<br />CPU: 2<br />RAM: 4GB<br />Disco: 15GB</p>
+<p>Clone o reposit&oacute;rio em seu servidor e execute o arquivo install.sh como root</p>
+
+````
+git clone https://github.com/thiagomalks/speedzabbixlab
+````
+````
+./install.sh
+````
+<p>Itens da Instala&ccedil;&atilde;o:<br />1 - Docker Engine CE<br />2 - Zabbix Server PSQL 6.0.12<br />3 - Zabbix Web Nginx 6.0.12<br />4 - Zabbix Agent2 6.6.12<br />5 - PostgreSQL 14-6</p>
+<p>Para atualização, basta verificar a versão de desejada no Docker Hub e alterar a tag no docker-compose, recriando posteriormente os serviços</p>
+<p>Ap&oacute;s instala&ccedil;&atilde;o, acesse o Zabbix pelo navegador utilizando o IP do servidor de instala&ccedil;&atilde;o.</p>
+<p>Se aparecer uma mensagem de erro de conexão com o banco, é por que este ainda está sendo populado. Aguarde até 5 minutos</p>
+<p>User: Admin<br />Pass: zabbix</p>
+<p>Após logar, vá em Configuration - Hosts , selecione o host Zabbix server<br> no Agent, mude para DNS e coloque zabbix-agent no campo DNS name, para que o agent do zabbix fique ativado </p>
+<p><strong>Diret&oacute;rios Principais da Instala&ccedil;&atilde;o</strong></p>
+<p>Docker Compose: /home/zabbix</p>
+<p>PostgreSQL e Zabbix persistent files: /opt/</p>
