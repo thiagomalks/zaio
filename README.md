@@ -1,7 +1,6 @@
 # zaio
 Zabbix All In One Architecture
 
-<h1>Zabbix LAB Full Install - Docker</h1>
 <p>Laborat&oacute;rio implementado para um servidor com as seguintes configura&ccedil;&otilde;es:</p>
 <p>SO: Ubuntu 20.04<br />CPU: 2<br />RAM: 4GB<br />Disco: 15GB</p>
 <p>Clone o reposit&oacute;rio em seu servidor e execute o arquivo install.sh como root</p>
