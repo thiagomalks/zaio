@@ -14,7 +14,7 @@ services:
       - /opt/postgresql/data:/var/lib/postgresql/data
       - /home/psql/init-user-db.sh:/docker-entrypoint-initdb.d/init-user-db.sh
 
-  zabbix-server-01:
+  zabbix-server-pgsql:
     image: zabbix/zabbix-server-pgsql:6.0.12-ubuntu
     restart: always
     environment:
@@ -23,26 +23,8 @@ services:
       - POSTGRES_PASSWORD=ZabbixLab
       - POSTGRES_DB=zabbix_db
       - DB_SERVER_PORT=5432
-      - ZBX_HANODENAME=zbbx-01
-      - ZBX_NODEADDRESS=zabbix-server-01
     ports:
       - 10051:10051
-    volumes:
-      - /opt/zabbix-server-pgsql/externalscripts:/usr/lib/zabbix/externalscripts:ro
-
-  zabbix-server-02:
-    image: zabbix/zabbix-server-pgsql:6.0.12-ubuntu
-    restart: always
-    environment:
-      - DB_SERVER_HOST=postgres-server-14
-      - POSTGRES_USER=zabbix
-      - POSTGRES_PASSWORD=ZabbixLab
-      - POSTGRES_DB=zabbix_db
-      - DB_SERVER_PORT=5432
-      - ZBX_HANODENAME=zbbx-02
-      - ZBX_NODEADDRESS=zabbix-server-02
-    ports:
-      - 20051:10051
     volumes:
       - /opt/zabbix-server-pgsql/externalscripts:/usr/lib/zabbix/externalscripts:ro
 
@@ -53,6 +35,7 @@ services:
       - PHP_TZ=Etc/UTC
       - /etc/localtime:/etc/localtime:ro
       - ZBX_SERVER_NAME=ZBBX LAB
+      - ZBX_SERVER_HOST=zabbix-server-pgsql
       - DB_SERVER_HOST=postgres-server-14
       - POSTGRES_USER=zabbix
       - POSTGRES_PASSWORD=ZabbixLab
@@ -62,38 +45,13 @@ services:
       - 443:8443
       - 80:8080
 
-  zabbix-agent-01:
+  zabbix-agent:
     image: zabbix/zabbix-agent2:6.0.12-ubuntu
     restart: always
     privileged: true
     environment:
-      - ZBX_HOSTNAME=zabbix-server-01
-      - ZBX_SERVER_HOST=zabbix-server-01,zabbix-server-02
+      - ZBX_HOSTNAME=zabbix-server-pgsql
+      - ZBX_SERVER_HOST=zabbix-server-pgsql
       - ZBX_ACTIVE_ALLOW=false
     ports:
     - 10050:10050
-
-  zabbix-agent-02:
-    image: zabbix/zabbix-agent2:6.0.12-ubuntu
-    restart: always
-    privileged: true
-    environment:
-      - ZBX_HOSTNAME=zabbix-server-02
-      - ZBX_SERVER_HOST=zabbix-server-01,zabbix-server-02
-      - ZBX_ACTIVE_ALLOW=false
-    ports:
-    - 20050:10050
-
-  portainer:
-    image: portainer/portainer-ce
-    command: -H unix:///var/run/docker.sock
-    restart: always
-    ports:
-      - 9000:9000
-      - 8000:8000
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
-
-volumes:
-  portainer_data:
