@@ -1,8 +1,7 @@
 # ZAIO - Zabbix All In One
 
 <p>Implementado para um servidor com as seguintes configura&ccedil;&otilde;es:</p>
-<p>CPU: 4<br />RAM: 8GB<br />Disco: 100GB<br />SO: Ubuntu 20.04 (ou superior).</p>
-<p>Ambiente Zabbix com estimativa de 50 hosts, rentenção de dados de 60d com trends de até 365d.</p>
+<p>CPU: 4<br />RAM: 4GB<br />Disco: 50GB<br />SO: Ubuntu 20.04 (ou superior).</p>
 <p>Clone o reposit&oacute;rio em seu servidor e execute o arquivo install.sh como root.</p>
 
 ````
